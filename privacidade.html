@@ -18,59 +18,60 @@
     <article class="card content">
       <h2>1. Visão Geral</h2>
       <p>
-        Esta Política de Privacidade descreve de forma transparente o funcionamento do aplicativo <strong>Quase Ficção - Automação</strong>, uma aplicação interna e privada criada unicamente para auxiliar na publicação automatizada de vídeos em canais próprios do projeto Quase Ficção no YouTube.
+        Esta Política de Privacidade descreve detalhadamente o tratamento de dados realizado pelo aplicativo <strong>Quase Ficção - Automação</strong>, uma aplicação de software privada e interna desenvolvida exclusivamente para automação de rotinas de upload, gerenciamento de miniaturas e agendamento de vídeos nos canais próprios do projeto Quase Ficção no YouTube.
       </p>
       <p>
-        O aplicativo não é disponibilizado a terceiros, não comercializa planos ou produtos e não possui finalidade de coleta de dados de usuários externos.
-      </p>
-
-      <h2>2. Uso da Autenticação Google OAuth</h2>
-      <p>
-        O aplicativo utiliza o protocolo <strong>Google OAuth 2.0</strong> estritamente para autenticar o proprietário do canal e autorizar o envio de conteúdos via <em>YouTube Data API v3</em>.
-      </p>
-      <p>
-        Os escopos solicitados limitam-se ao gerenciamento de uploads de vídeo (como <code>https://www.googleapis.com/auth/youtube.upload</code> ou gerenciamento do canal próprio). Nenhuma outra informação da Conta Google (como dados de e-mail do Gmail, arquivos do Google Drive, agenda ou contatos) é acessada, consultada ou armazenada.
+        O aplicativo não é um serviço público, não possui cadastro para terceiros, não comercializa produtos ou serviços e não coleta dados de usuários externos.
       </p>
 
-      <h2>3. Armazenamento e Segurança dos Tokens</h2>
+      <h2>2. Escopos de Acesso e Uso do Google OAuth</h2>
       <p>
-        Após a autorização pelo proprietário:
+        O aplicativo conecta-se à API oficial do YouTube (<em>YouTube Data API v3</em>) via protocolo seguro <strong>Google OAuth 2.0</strong>, solicitando estritamente os seguintes escopos de autorização:
       </p>
       <ul>
-        <li>Os tokens de acesso (<em>access tokens</em>) e tokens de renovação (<em>refresh tokens</em>) são salvos <strong>exclusivamente de forma local</strong> no ambiente seguro da máquina onde a automação é executada.</li>
-        <li>Nenhum token ou credencial é transmitido para servidores de terceiros, bancos de dados externos ou serviços em nuvem intermediários.</li>
-        <li>O tráfego de dados durante o envio de vídeos ocorre diretamente entre o ambiente local do operador e os servidores seguros da Google / YouTube.</li>
+        <li><code>https://www.googleapis.com/auth/youtube.upload</code>: utilizado para fazer o envio (upload) de arquivos de vídeo finalizados, aplicar metadados (título, descrição, tags, idioma) e configurar imagens de miniatura (thumbnails) nos vídeos do canal.</li>
+        <li><code>https://www.googleapis.com/auth/youtube.readonly</code>: utilizado estritamente para consultar a lista e o identificador do canal autorizado (<em>channel ID</em>), validando programaticamente a identidade do canal antes de qualquer envio para garantir que o upload seja direcionado com exatidão ao canal correto do projeto.</li>
+      </ul>
+      <p>
+        Nenhum outro serviço da Google (como Gmail, Google Drive, Google Contatos ou histórico de navegação) é acessado, consultado, monitorado ou modificado.
+      </p>
+
+      <h2>3. Armazenamento e Transmissão de Tokens</h2>
+      <p>
+        A segurança e a custódia das credenciais seguem critérios rigorosos de isolamento local:
+      </p>
+      <ul>
+        <li><strong>Armazenamento estritamente local:</strong> Após o fluxo de consentimento OAuth do Google no navegador, os tokens de acesso (<em>access tokens</em>) e de renovação (<em>refresh tokens</em>) são gravados unicamente no disco rígido da máquina local do operador em arquivo seguro (com permissões restritas de leitura/escrita <code>0600</code> exclusivas do usuário do sistema operacional).</li>
+        <li><strong>Comunicação direta sem intermediários:</strong> As requisições de API e o tráfego dos vídeos ocorrem diretamente entre a máquina local do operador e os servidores seguros da Google (<em>endpoints</em> oficiais do YouTube). Não existem servidores proxy, servidores intermediários, bancos de dados em nuvem de terceiros ou serviços externos interceptando ou armazenando os tokens.</li>
+        <li><strong>Renovação de tokens:</strong> A renovação periódica do token de acesso é realizada diretamente com os servidores de autenticação da Google usando a biblioteca oficial (<code>google-auth</code>), mantendo o novo token restrito ao ambiente local.</li>
       </ul>
 
       <h2>4. Não Compartilhamento e Não Comercialização de Dados</h2>
-      <p>
-        O Quase Ficção compromete-se com as seguintes diretrizes fundamentais:
-      </p>
       <ul>
-        <li><strong>Sem venda de dados:</strong> Nunca vendemos, alugamos, cedemos ou comercializamos quaisquer dados ou informações obtidos através dos serviços Google.</li>
-        <li><strong>Sem rastreamento de terceiros:</strong> Este site e o aplicativo não utilizam ferramentas de rastreamento comportamental, cookies analíticos de terceiros nem redes de anúncios.</li>
-        <li><strong>Sem uso para modelos públicos de IA:</strong> Nenhum dado acessado através da API do YouTube é utilizado para treinar modelos de inteligência artificial públicos ou acessíveis a terceiros.</li>
+        <li><strong>Ausência de venda ou cessão de dados:</strong> O Quase Ficção não vende, não aluga, não compartilha e não transfere dados obtidos por meio das APIs da Google a terceiros, corretores de dados ou anunciantes sob nenhuma circunstância.</li>
+        <li><strong>Sem rastreamento e sem publicidade:</strong> Nem o site informativo nem os scripts de automação utilizam telemetria de terceiros, ferramentas analíticas de rastreamento comportamental, cookies de publicidade ou pixels de conversão.</li>
+        <li><strong>Sem uso para treinamento de IA externa:</strong> Os dados acessados através da API do YouTube não são utilizados para treinar modelos públicos de linguagem ou inteligência artificial de terceiros.</li>
       </ul>
 
       <h2>5. Como Revogar a Autorização</h2>
       <p>
-        O proprietário da Conta Google pode verificar ou revogar o acesso concedido ao aplicativo a qualquer momento:
+        A autorização concedida pelo proprietário do canal ao aplicativo pode ser consultada ou revogada instantaneamente a qualquer momento diretamente na Conta Google:
       </p>
       <ol>
-        <li>Acesse o painel de segurança de sua conta: <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">https://myaccount.google.com/permissions</a></li>
-        <li>Localize <strong>Quase Ficção - Automação</strong> na lista de aplicativos com acesso à sua conta.</li>
-        <li>Clique em <strong>Remover o acesso</strong>.</li>
+        <li>Acesse a página de segurança e permissões da sua Conta Google: <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">https://myaccount.google.com/permissions</a></li>
+        <li>Na lista de aplicativos autorizados, selecione <strong>Quase Ficção - Automação</strong>.</li>
+        <li>Clique em <strong>Remover o acesso</strong> (ou <em>Excluir conexões que você tem com Quase Ficção - Automação</em>).</li>
       </ol>
       <p>
-        Uma vez revogado o acesso, o aplicativo perderá imediatamente a capacidade de realizar uploads ou interagir com o canal até que uma nova autorização explícita seja concedida.
+        Após a revogação, qualquer token armazenado localmente torna-se imediatamente inválido, cessando toda e qualquer interação com a API até que uma nova autorização explícita seja solicitada.
       </p>
 
-      <h2>6. Contato</h2>
+      <h2>6. Contato do Responsável</h2>
       <p>
-        Em caso de dúvidas sobre esta política de privacidade ou sobre a operação técnica do aplicativo, o desenvolvedor pode ser contatado em:
+        Para dúvidas sobre o funcionamento da ferramenta, solicitações ou informações adicionais sobre esta política de privacidade, entre em contato diretamente com o responsável pelo projeto:
       </p>
       <p class="contact-box">
-        <strong>E-mail de contato:</strong> <span class="placeholder">[SEU_EMAIL_AQUI]</span>
+        <strong>E-mail oficial:</strong> <a href="mailto:quaseficcaotv@gmail.com">quaseficcaotv@gmail.com</a>
       </p>
     </article>
 
