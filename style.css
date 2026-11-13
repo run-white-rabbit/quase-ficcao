@@ -136,6 +136,13 @@ a:hover {
   color: var(--accent-hover);
 }
 
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
 .btn {
   display: inline-block;
   background-color: var(--btn-bg);
@@ -144,11 +151,22 @@ a:hover {
   font-weight: 500;
   padding: 0.65rem 1.25rem;
   border-radius: 6px;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .btn:hover {
   background-color: var(--btn-hover);
+}
+
+.btn-secondary {
+  background-color: var(--code-bg);
+  border: 1px solid var(--border);
+  color: var(--text-main) !important;
+}
+
+.btn-secondary:hover {
+  background-color: var(--border);
+  color: var(--text-main) !important;
 }
 
 .contact-box {
