@@ -1,0 +1,182 @@
+:root {
+  --bg-color: #0f1117;
+  --card-bg: #1a1d26;
+  --text-main: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --accent-hover: #79b8ff;
+  --border: #30363d;
+  --btn-bg: #238636;
+  --btn-hover: #2ea043;
+  --btn-text: #ffffff;
+  --code-bg: #22272e;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: #f6f8fa;
+    --card-bg: #ffffff;
+    --text-main: #1f2328;
+    --text-muted: #656d76;
+    --accent: #0969da;
+    --accent-hover: #0854ad;
+    --border: #d0d7de;
+    --btn-bg: #1f883d;
+    --btn-hover: #1a7f37;
+    --btn-text: #ffffff;
+    --code-bg: #eff1f3;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.65;
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
+}
+
+.content h2:first-of-type {
+  margin-top: 0;
+}
+
+.tagline {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.date {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.nav-back {
+  margin-bottom: 1rem;
+}
+
+.nav-back a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.nav-back a:hover {
+  text-decoration: underline;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul, ol {
+  margin: 0.75rem 0 1.25rem 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background-color: var(--code-bg);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--btn-bg);
+  color: var(--btn-text) !important;
+  text-decoration: none !important;
+  font-weight: 500;
+  padding: 0.65rem 1.25rem;
+  border-radius: 6px;
+  transition: background-color 0.15s ease;
+}
+
+.btn:hover {
+  background-color: var(--btn-hover);
+}
+
+.contact-box {
+  background-color: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 0.85rem 1rem;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.placeholder {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+footer {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+footer a {
+  color: var(--text-muted);
+}
+
+footer a:hover {
+  color: var(--text-main);
+}

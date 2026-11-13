@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade — Quase Ficção - Automação</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <p class="nav-back"><a href="index.html">&larr; Voltar para a página inicial</a></p>
+      <h1>Política de Privacidade</h1>
+      <p class="tagline">Aplicativo: Quase Ficção - Automação (Google Cloud: quase-ficcao-automacao)</p>
+      <p class="date">Última atualização: 13 de novembro de 2026</p>
+    </header>
+
+    <article class="card content">
+      <h2>1. Visão Geral</h2>
+      <p>
+        Esta Política de Privacidade descreve de forma transparente o funcionamento do aplicativo <strong>Quase Ficção - Automação</strong>, uma aplicação interna e privada criada unicamente para auxiliar na publicação automatizada de vídeos em canais próprios do projeto Quase Ficção no YouTube.
+      </p>
+      <p>
+        O aplicativo não é disponibilizado a terceiros, não comercializa planos ou produtos e não possui finalidade de coleta de dados de usuários externos.
+      </p>
+
+      <h2>2. Uso da Autenticação Google OAuth</h2>
+      <p>
+        O aplicativo utiliza o protocolo <strong>Google OAuth 2.0</strong> estritamente para autenticar o proprietário do canal e autorizar o envio de conteúdos via <em>YouTube Data API v3</em>.
+      </p>
+      <p>
+        Os escopos solicitados limitam-se ao gerenciamento de uploads de vídeo (como <code>https://www.googleapis.com/auth/youtube.upload</code> ou gerenciamento do canal próprio). Nenhuma outra informação da Conta Google (como dados de e-mail do Gmail, arquivos do Google Drive, agenda ou contatos) é acessada, consultada ou armazenada.
+      </p>
+
+      <h2>3. Armazenamento e Segurança dos Tokens</h2>
+      <p>
+        Após a autorização pelo proprietário:
+      </p>
+      <ul>
+        <li>Os tokens de acesso (<em>access tokens</em>) e tokens de renovação (<em>refresh tokens</em>) são salvos <strong>exclusivamente de forma local</strong> no ambiente seguro da máquina onde a automação é executada.</li>
+        <li>Nenhum token ou credencial é transmitido para servidores de terceiros, bancos de dados externos ou serviços em nuvem intermediários.</li>
+        <li>O tráfego de dados durante o envio de vídeos ocorre diretamente entre o ambiente local do operador e os servidores seguros da Google / YouTube.</li>
+      </ul>
+
+      <h2>4. Não Compartilhamento e Não Comercialização de Dados</h2>
+      <p>
+        O Quase Ficção compromete-se com as seguintes diretrizes fundamentais:
+      </p>
+      <ul>
+        <li><strong>Sem venda de dados:</strong> Nunca vendemos, alugamos, cedemos ou comercializamos quaisquer dados ou informações obtidos através dos serviços Google.</li>
+        <li><strong>Sem rastreamento de terceiros:</strong> Este site e o aplicativo não utilizam ferramentas de rastreamento comportamental, cookies analíticos de terceiros nem redes de anúncios.</li>
+        <li><strong>Sem uso para modelos públicos de IA:</strong> Nenhum dado acessado através da API do YouTube é utilizado para treinar modelos de inteligência artificial públicos ou acessíveis a terceiros.</li>
+      </ul>
+
+      <h2>5. Como Revogar a Autorização</h2>
+      <p>
+        O proprietário da Conta Google pode verificar ou revogar o acesso concedido ao aplicativo a qualquer momento:
+      </p>
+      <ol>
+        <li>Acesse o painel de segurança de sua conta: <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">https://myaccount.google.com/permissions</a></li>
+        <li>Localize <strong>Quase Ficção - Automação</strong> na lista de aplicativos com acesso à sua conta.</li>
+        <li>Clique em <strong>Remover o acesso</strong>.</li>
+      </ol>
+      <p>
+        Uma vez revogado o acesso, o aplicativo perderá imediatamente a capacidade de realizar uploads ou interagir com o canal até que uma nova autorização explícita seja concedida.
+      </p>
+
+      <h2>6. Contato</h2>
+      <p>
+        Em caso de dúvidas sobre esta política de privacidade ou sobre a operação técnica do aplicativo, o desenvolvedor pode ser contatado em:
+      </p>
+      <p class="contact-box">
+        <strong>E-mail de contato:</strong> <span class="placeholder">[SEU_EMAIL_AQUI]</span>
+      </p>
+    </article>
+
+    <footer>
+      <p>&copy; 2026 Quase Ficção — <a href="index.html">Página Inicial</a></p>
+    </footer>
+  </main>
+</body>
+</html>
