@@ -1,0 +1,4 @@
+# Evidências locais de auditoria (não publicar no repositório público)
+evidencias/
+*.png
+.DS_Store
