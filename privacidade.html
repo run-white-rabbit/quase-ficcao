@@ -18,7 +18,7 @@
     <article class="card content">
       <h2>1. Visão Geral</h2>
       <p>
-        Esta Política de Privacidade descreve detalhadamente o tratamento de dados realizado pelo aplicativo <strong>Quase Ficção - Automação</strong>, uma aplicação de software privada e interna desenvolvida exclusivamente para automação de rotinas de upload, gerenciamento de miniaturas e agendamento de vídeos nos canais próprios do projeto Quase Ficção no YouTube.
+        Esta Política de Privacidade descreve detalhadamente o tratamento de dados realizado pelo aplicativo <strong>Quase Ficção - Automação</strong>, uma aplicação de software privada e operacional desenvolvida para automação de rotinas de upload, gerenciamento de miniaturas e agendamento de vídeos em canais próprios no YouTube pertencentes ao mesmo operador. A ferramenta é utilizada inicialmente no canal <em>Quase Ficção</em> e está apta a gerenciar outros canais próprios do mesmo operador, sempre mediante autorização OAuth individual e independente para cada canal.
       </p>
       <p>
         O aplicativo não é um serviço público, não possui cadastro para terceiros, não comercializa produtos ou serviços e não coleta dados de usuários externos.
@@ -30,7 +30,7 @@
       </p>
       <ul>
         <li><code>https://www.googleapis.com/auth/youtube.upload</code>: utilizado para fazer o envio (upload) de arquivos de vídeo finalizados, aplicar metadados (título, descrição, tags, idioma) e configurar imagens de miniatura (thumbnails) nos vídeos do canal.</li>
-        <li><code>https://www.googleapis.com/auth/youtube.readonly</code>: utilizado estritamente para consultar a lista e o identificador do canal autorizado (<em>channel ID</em>), validando programaticamente a identidade do canal antes de qualquer envio para garantir que o upload seja direcionado com exatidão ao canal correto do projeto.</li>
+        <li><code>https://www.googleapis.com/auth/youtube.readonly</code>: utilizado estritamente para consultar a lista e o identificador do canal autorizado (<em>channel ID</em>), validando programaticamente a identidade do canal antes de qualquer envio para garantir que o upload seja direcionado com exatidão ao canal específico selecionado pelo operador.</li>
       </ul>
       <p>
         Nenhum outro serviço da Google (como Gmail, Google Drive, Google Contatos ou histórico de navegação) é acessado, consultado, monitorado ou modificado.
@@ -41,7 +41,7 @@
         A segurança e a custódia das credenciais seguem critérios rigorosos de isolamento local:
       </p>
       <ul>
-        <li><strong>Armazenamento estritamente local:</strong> Após o fluxo de consentimento OAuth do Google no navegador, os tokens de acesso (<em>access tokens</em>) e de renovação (<em>refresh tokens</em>) são gravados unicamente no disco rígido da máquina local do operador em arquivo seguro (com permissões restritas de leitura/escrita <code>0600</code> exclusivas do usuário do sistema operacional).</li>
+        <li><strong>Armazenamento estritamente local e isolado por canal:</strong> Após o fluxo de consentimento OAuth do Google no navegador, os tokens de acesso (<em>access tokens</em>) e de renovação (<em>refresh tokens</em>) são gravados unicamente no disco rígido da máquina local do operador em arquivos individuais e seguros por canal (com permissões restritas de leitura/escrita <code>0600</code> exclusivas do usuário do sistema operacional). A autorização concedida a um canal não sobrescreve nem interfere nas credenciais de outros canais autorizados.</li>
         <li><strong>Comunicação direta sem intermediários:</strong> As requisições de API e o tráfego dos vídeos ocorrem diretamente entre a máquina local do operador e os servidores seguros da Google (<em>endpoints</em> oficiais do YouTube). Não existem servidores proxy, servidores intermediários, bancos de dados em nuvem de terceiros ou serviços externos interceptando ou armazenando os tokens.</li>
         <li><strong>Renovação de tokens:</strong> A renovação periódica do token de acesso é realizada diretamente com os servidores de autenticação da Google usando a biblioteca oficial (<code>google-auth</code>), mantendo o novo token restrito ao ambiente local.</li>
       </ul>
