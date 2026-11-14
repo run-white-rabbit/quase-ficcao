@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Política de Privacidade — Quase Ficção - Automação</title>
+  <title>Política de Privacidade — Central de Publicações</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,72 +11,79 @@
     <header>
       <p class="nav-back"><a href="index.html">&larr; Página Inicial</a> | <a href="termos.html">Termos de Serviço</a></p>
       <h1>Política de Privacidade</h1>
-      <p class="tagline">Aplicativo: Quase Ficção - Automação (Google Cloud: quase-ficcao-automacao)</p>
+      <p class="tagline">Aplicativo: Central de Publicações (Google Cloud: quase-ficcao-automacao)</p>
       <p class="date">Última atualização: 13 de novembro de 2026</p>
     </header>
 
     <article class="card content">
       <h2>1. Visão Geral</h2>
       <p>
-        Esta Política de Privacidade descreve detalhadamente o tratamento de dados realizado pelo aplicativo <strong>Quase Ficção - Automação</strong>, uma aplicação de software privada e operacional desenvolvida para automação de rotinas de upload, gerenciamento de miniaturas e agendamento de vídeos em canais próprios no YouTube pertencentes ao mesmo operador. A ferramenta é utilizada inicialmente no canal <em>Quase Ficção</em> e está apta a gerenciar outros canais próprios do mesmo operador, sempre mediante autorização OAuth individual e independente para cada canal.
+        Esta Política de Privacidade descreve detalhadamente o tratamento de dados realizado pelo aplicativo <strong>Central de Publicações</strong>, uma ferramenta de software operacional privada e interna desenvolvida para gerenciar rotinas de upload, agendamento e metadados de conteúdos audiovisuais em múltiplos canais e páginas próprias do mesmo operador em plataformas digitais, incluindo YouTube, Instagram e Facebook.
       </p>
       <p>
-        O aplicativo não é um serviço público, não possui cadastro para terceiros, não comercializa produtos ou serviços e não coleta dados de usuários externos.
+        O aplicativo é utilizado operacionalmente para a gestão de canais próprios (iniciando pelo canal <em>Quase Ficção</em> e expandindo para outros canais do mesmo operador). O sistema não é um serviço público ou comercial, não possui cadastro para terceiros, não comercializa dados e não coleta informações de usuários externos.
       </p>
 
-      <h2>2. Escopos de Acesso e Uso do Google OAuth</h2>
+      <h2>2. Escopos de Acesso e Integrações por Plataforma</h2>
       <p>
-        O aplicativo conecta-se à API oficial do YouTube (<em>YouTube Data API v3</em>) via protocolo seguro <strong>Google OAuth 2.0</strong>, solicitando estritamente os seguintes escopos de autorização:
+        Cada canal ou página integrada à Central de Publicações é conectado mediante consentimento formal e autorização individual, de forma que as permissões de uma plataforma ou canal não interferem nas demais:
       </p>
       <ul>
-        <li><code>https://www.googleapis.com/auth/youtube.upload</code>: utilizado para fazer o envio (upload) de arquivos de vídeo finalizados, aplicar metadados (título, descrição, tags, idioma) e configurar imagens de miniatura (thumbnails) nos vídeos do canal.</li>
-        <li><code>https://www.googleapis.com/auth/youtube.readonly</code>: utilizado estritamente para consultar a lista e o identificador do canal autorizado (<em>channel ID</em>), validando programaticamente a identidade do canal antes de qualquer envio para garantir que o upload seja direcionado com exatidão ao canal específico selecionado pelo operador.</li>
+        <li>
+          <strong>Integração com YouTube (Google OAuth 2.0):</strong> a ferramenta utiliza a <em>YouTube Data API v3</em> solicitando estritamente os escopos necessários:
+          <ul>
+            <li><code>https://www.googleapis.com/auth/youtube.upload</code>: para envio de arquivos de vídeo, definição de metadados (título, descrição, idioma, tags) e imagens de miniatura nos vídeos do canal autorizado.</li>
+            <li><code>https://www.googleapis.com/auth/youtube.readonly</code>: estritamente para consultar o identificador do canal (<em>channel ID</em>), validando programaticamente se a conta corresponde ao canal selecionado antes de iniciar qualquer envio.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Integrações com Instagram e Facebook:</strong> as publicações em páginas ou perfis profissionais próprios do operador utilizam os fluxos e credenciais oficiais de API das respectivas plataformas, restritas à postagem de conteúdo previamente aprovado pelo operador.
+        </li>
       </ul>
       <p>
-        Nenhum outro serviço da Google (como Gmail, Google Drive, Google Contatos ou histórico de navegação) é acessado, consultado, monitorado ou modificado.
+        Nenhum dado pessoal de outros serviços (como e-mails do Gmail, arquivos do Google Drive, contatos ou dados de navegação) é acessado, consultado ou processado.
       </p>
 
-      <h2>3. Armazenamento e Transmissão de Tokens</h2>
+      <h2>3. Armazenamento e Isolamento de Tokens</h2>
       <p>
-        A segurança e a custódia das credenciais seguem critérios rigorosos de isolamento local:
+        A custódia das credenciais segue políticas estritas de isolamento local:
       </p>
       <ul>
-        <li><strong>Armazenamento estritamente local e isolado por canal:</strong> Após o fluxo de consentimento OAuth do Google no navegador, os tokens de acesso (<em>access tokens</em>) e de renovação (<em>refresh tokens</em>) são gravados unicamente no disco rígido da máquina local do operador em arquivos individuais e seguros por canal (com permissões restritas de leitura/escrita <code>0600</code> exclusivas do usuário do sistema operacional). A autorização concedida a um canal não sobrescreve nem interfere nas credenciais de outros canais autorizados.</li>
-        <li><strong>Comunicação direta sem intermediários:</strong> As requisições de API e o tráfego dos vídeos ocorrem diretamente entre a máquina local do operador e os servidores seguros da Google (<em>endpoints</em> oficiais do YouTube). Não existem servidores proxy, servidores intermediários, bancos de dados em nuvem de terceiros ou serviços externos interceptando ou armazenando os tokens.</li>
-        <li><strong>Renovação de tokens:</strong> A renovação periódica do token de acesso é realizada diretamente com os servidores de autenticação da Google usando a biblioteca oficial (<code>google-auth</code>), mantendo o novo token restrito ao ambiente local.</li>
+        <li><strong>Armazenamento estritamente local:</strong> Todos os tokens de acesso e renovação são armazenados unicamente no disco rígido da máquina local do operador, em arquivos individuais separados por canal e plataforma (com permissões restritas de leitura/escrita <code>0600</code>).</li>
+        <li><strong>Sem intermediários externos:</strong> A comunicação ocorre de forma direta e segura entre o ambiente local do operador e os servidores oficiais das plataformas (endpoints de API oficiais). Não existem servidores proxy, bancos de dados em nuvem de terceiros ou serviços intermediários armazenando ou interceptando tokens.</li>
+        <li><strong>Renovação segura:</strong> A renovação periódica de tokens OAuth é realizada diretamente com os serviços de autenticação oficiais (ex.: Google Identity), mantendo os novos tokens no ambiente local.</li>
       </ul>
 
       <h2>4. Não Compartilhamento e Não Comercialização de Dados</h2>
       <ul>
-        <li><strong>Ausência de venda ou cessão de dados:</strong> O Quase Ficção não vende, não aluga, não compartilha e não transfere dados obtidos por meio das APIs da Google a terceiros, corretores de dados ou anunciantes sob nenhuma circunstância.</li>
-        <li><strong>Sem rastreamento e sem publicidade:</strong> Nem o site informativo nem os scripts de automação utilizam telemetria de terceiros, ferramentas analíticas de rastreamento comportamental, cookies de publicidade ou pixels de conversão.</li>
-        <li><strong>Sem uso para treinamento de IA externa:</strong> Os dados acessados através da API do YouTube não são utilizados para treinar modelos públicos de linguagem ou inteligência artificial de terceiros.</li>
+        <li><strong>Sem comercialização:</strong> A Central de Publicações não vende, não aluga, não compartilha e não cede dados de usuários ou credenciais de API a terceiros sob nenhuma hipótese.</li>
+        <li><strong>Sem rastreamento:</strong> Este site e o sistema operacional não utilizam rastreadores analíticos de terceiros, ferramentas de telemetria comportamental, cookies de publicidade ou pixels de marketing.</li>
+        <li><strong>Sem uso para modelos de inteligência artificial de terceiros:</strong> Nenhum dado acessado por meio das APIs é utilizado para treinar modelos públicos de linguagem ou inteligência artificial externa.</li>
       </ul>
 
       <h2>5. Como Revogar a Autorização</h2>
       <p>
-        A autorização concedida pelo proprietário do canal ao aplicativo pode ser consultada ou revogada instantaneamente a qualquer momento diretamente na Conta Google:
+        O operador pode consultar ou revogar a qualquer momento o acesso concedido à Central de Publicações diretamente nos painéis de segurança de cada plataforma:
       </p>
-      <ol>
-        <li>Acesse a página de segurança e permissões da sua Conta Google: <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">https://myaccount.google.com/permissions</a></li>
-        <li>Na lista de aplicativos autorizados, selecione <strong>Quase Ficção - Automação</strong>.</li>
-        <li>Clique em <strong>Remover o acesso</strong> (ou <em>Excluir conexões que você tem com Quase Ficção - Automação</em>).</li>
-      </ol>
+      <ul>
+        <li><strong>Contas Google / YouTube:</strong> acesse <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">https://myaccount.google.com/permissions</a>, selecione o aplicativo e clique em <em>Remover o acesso</em>.</li>
+        <li><strong>Contas Meta / Instagram / Facebook:</strong> acesse a área de aplicativos e sites conectados nas configurações de segurança da respectiva conta comercial.</li>
+      </ul>
       <p>
-        Após a revogação, qualquer token armazenado localmente torna-se imediatamente inválido, cessando toda e qualquer interação com a API até que uma nova autorização explícita seja solicitada.
+        A revogação cancela imediatamente a validade dos tokens locais para aquele canal ou serviço, impedindo qualquer nova ação automatizada até nova autorização explícita.
       </p>
 
       <h2>6. Contato do Responsável</h2>
       <p>
-        Para dúvidas sobre o funcionamento da ferramenta, solicitações ou informações adicionais sobre esta política de privacidade, entre em contato diretamente com o responsável pelo projeto:
+        Para esclarecimentos ou informações adicionais sobre esta política de privacidade, entre em contato diretamente com o responsável técnico:
       </p>
       <p class="contact-box">
-        <strong>E-mail oficial:</strong> <a href="mailto:quaseficcaotv@gmail.com">quaseficcaotv@gmail.com</a>
+        <strong>E-mail de contato:</strong> <a href="mailto:quaseficcaotv@gmail.com">quaseficcaotv@gmail.com</a>
       </p>
     </article>
 
     <footer>
-      <p>&copy; 2026 Quase Ficção — <a href="index.html">Página Inicial</a> | <a href="privacidade.html">Política de Privacidade</a> | <a href="termos.html">Termos de Serviço</a></p>
+      <p>&copy; 2026 Central de Publicações — <a href="index.html">Página Inicial</a> | <a href="privacidade.html">Política de Privacidade</a> | <a href="termos.html">Termos de Serviço</a></p>
     </footer>
   </main>
 </body>
