@@ -20,44 +20,55 @@
     <article class="card content">
       <h2>1. Natureza e Finalidade do Sistema</h2>
       <p>
-        A <strong>Central de Publicações</strong> é uma ferramenta de software operacional privada, de uso estritamente interno e pessoal, desenvolvida unicamente para gerenciar o agendamento, envio (upload) e metadados de conteúdos audiovisuais produzidos para múltiplos canais e páginas próprias do operador em plataformas digitais como YouTube, Instagram e Facebook.
+        A <strong>Central de Publicações</strong> é uma ferramenta de software operacional privada, de execução local e de uso estritamente interno e pessoal, desenvolvida unicamente para gerenciar o agendamento, envio (upload) e metadados de conteúdos audiovisuais produzidos para canais próprios no YouTube e páginas próprias do operador em plataformas digitais.
       </p>
       <p>
-        O software é operado inicialmente na gestão do canal <em>Quase Ficção</em> e outros canais proprietários do operador, sempre mediante autorização individual e isolada para cada canal e serviço. Este sistema <strong>não é um serviço público, comercial ou software para terceiros (não é SaaS)</strong>: não disponibiliza contas, planos ou infraestrutura para usuários externos.
+        O software opera mediante autorizações individuais e isoladas para cada canal próprio conectado. Este sistema <strong>não é um serviço público, comercial ou software para terceiros (não é SaaS)</strong>: não disponibiliza contas, planos, cadastros ou infraestrutura para terceiros ou usuários externos.
       </p>
 
-      <h2>2. Conformidade com os Termos das Plataformas</h2>
+      <h2>2. Conformidade com os Termos das Plataformas e Serviços de API</h2>
       <p>
-        O funcionamento da Central de Publicações submete-se integralmente às diretrizes, políticas de uso e termos de serviço de cada ecossistema integrado:
+        Ao interagir com o ecossistema do YouTube e da Google, a Central de Publicações e seu operador comprometem-se expressamente a cumprir as seguintes normas e diretrizes:
       </p>
       <ul>
+        <li><strong>Termos dos Serviços de API do YouTube:</strong> disponíveis em <a href="https://developers.google.com/youtube/terms/api-services-terms-of-service" target="_blank" rel="noopener noreferrer">https://developers.google.com/youtube/terms/api-services-terms-of-service</a>.</li>
         <li><strong>Termos de Serviço do YouTube:</strong> disponíveis em <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">https://www.youtube.com/t/terms</a>.</li>
-        <li><strong>Política de Privacidade da Google:</strong> disponível em <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>.</li>
-        <li><strong>Política de Dados do Usuário dos Serviços de API da Google:</strong> disponível em <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>.</li>
-        <li><strong>Termos e Diretrizes de Plataforma da Meta:</strong> aplicáveis às publicações no Instagram e Facebook.</li>
+        <li><strong>Política de Dados do Usuário dos Serviços de API do Google:</strong> disponível em <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">https://developers.google.com/terms/api-services-user-data-policy</a>.</li>
+        <li><strong>Diretrizes das demais plataformas suportadas:</strong> aplicáveis às publicações em páginas ou perfis profissionais próprios em redes associadas (como Instagram e Facebook).</li>
       </ul>
 
-      <h2>3. Direitos Autorais e Responsabilidade de Conteúdo</h2>
+      <h2>3. Requisitos de Uso Limitado da Google API Services User Data Policy</h2>
       <p>
-        Todos os vídeos, metadados, títulos, descrições e imagens manipulados e enviados através da Central de Publicações são de propriedade, autoria e responsabilidade exclusiva do operador dos canais, respeitando estritamente a legislação de direitos autorais e as diretrizes de comunidade de cada plataforma de destino.
+        O uso e a transferência para qualquer outro aplicativo de informações recebidas das APIs do Google aderem integralmente à <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, incluindo todos os requisitos de <strong>Uso Limitado</strong> (<em>Limited Use</em>). Em especial:
+      </p>
+      <ul>
+        <li>Os dados acessados via API são restritos exclusivamente ao fornecimento e aprimoramento das funcionalidades operacionais voltadas ao operador da aplicação (identificação de canal próprio, envio de vídeos e checagem de status).</li>
+        <li>Não há transferência de dados a terceiros, exceto quando estritamente necessário para prestar o serviço técnico solicitado e autorizado pelo operador.</li>
+        <li>Não há utilização de dados de usuários do Google para veiculação de anúncios publicitários.</li>
+        <li>Não é permitido que seres humanos leiam dados obtidos via API, a menos que haja consentimento explícito para fins de suporte técnico pontual ou cumprimento legal.</li>
+      </ul>
+
+      <h2>4. Direitos Autorais e Responsabilidade de Conteúdo</h2>
+      <p>
+        Todos os vídeos, metadados, títulos, descrições e imagens manipulados e enviados através da Central de Publicações são de propriedade, autoria e responsabilidade exclusiva do operador dos canais, respeitando estritamente a legislação de direitos autorais e as Diretrizes da Comunidade do YouTube.
       </p>
 
-      <h2>4. Privacidade, Armazenamento Local e Segurança</h2>
+      <h2>5. Privacidade, Armazenamento Local e Segurança</h2>
       <p>
-        A ferramenta não comercializa, não compartilha e não armazena dados em servidores externos de terceiros. As credenciais e tokens de acesso concedidos para cada canal são mantidos exclusivamente no ambiente local da máquina do operador. Para maiores detalhes sobre o tratamento de dados, consulte nossa <a href="privacidade.html">Política de Privacidade</a>.
+        A ferramenta não comercializa, não compartilha e não armazena dados em servidores externos de terceiros. As credenciais e tokens de acesso concedidos para cada canal próprio são mantidos exclusivamente no ambiente local da máquina do operador (com permissões restritas do sistema operacional, sem criptografia adicional implementada). Para maiores detalhes sobre o tratamento de dados e exclusão manual, consulte nossa <a href="privacidade.html">Política de Privacidade</a>.
       </p>
 
-      <h2>5. Revogação e Cancelamento Granular de Acesso</h2>
+      <h2>6. Revogação e Cancelamento Granular de Acesso</h2>
       <p>
-        Por operar via integrações diretas e protocolos de autenticação oficiais (como o OAuth 2.0), o operador pode revogar a qualquer momento as permissões de qualquer canal ou serviço diretamente nos painéis de segurança da respectiva plataforma (como em <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">https://myaccount.google.com/permissions</a> para o Google), cessando imediatamente qualquer capacidade de publicação no canal revogado.
+        Por operar via integrações diretas e protocolos de autenticação oficiais (como o OAuth 2.0), o operador pode revogar a qualquer momento as permissões de qualquer canal próprio diretamente nos painéis de segurança da respectiva plataforma (como em <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">https://myaccount.google.com/permissions</a> para o Google), cessando imediatamente qualquer capacidade de publicação no canal revogado.
       </p>
 
-      <h2>6. Isenção de Vínculo Oficial ou Endosso</h2>
+      <h2>7. Isenção de Vínculo Oficial ou Endosso</h2>
       <p>
         A Central de Publicações é uma ferramenta operacional independente. O aplicativo não é patrocinado, endossado, certificado ou formalmente afiliado à Google LLC, YouTube, Meta Platforms Inc., Instagram ou Facebook. Os nomes de plataformas e APIs são utilizados estritamente para fins de identificação técnica das integrações e destinos de publicação.
       </p>
 
-      <h2>7. Canal de Contato</h2>
+      <h2>8. Canal de Contato</h2>
       <p>
         Para dúvidas ou esclarecimentos sobre estes Termos de Serviço, utilize o canal oficial de contato:
       </p>

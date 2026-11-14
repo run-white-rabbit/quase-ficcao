@@ -18,64 +18,75 @@
     <article class="card content">
       <h2>1. Visão Geral</h2>
       <p>
-        Esta Política de Privacidade descreve detalhadamente o tratamento de dados realizado pelo aplicativo <strong>Central de Publicações</strong>, uma ferramenta de software operacional privada e interna desenvolvida para gerenciar rotinas de upload, agendamento e metadados de conteúdos audiovisuais em múltiplos canais e páginas próprias do mesmo operador em plataformas digitais, incluindo YouTube, Instagram e Facebook.
+        Esta Política de Privacidade descreve de forma transparente o tratamento de dados realizado pelo aplicativo <strong>Central de Publicações</strong>, uma aplicação de software operacional privada, de execução local e de uso estritamente interno, desenvolvida exclusivamente para gerenciar rotinas de upload, agendamento de publicações e organização de metadados em canais próprios no YouTube e em páginas próprias do mesmo operador em plataformas digitais.
       </p>
       <p>
-        O aplicativo é utilizado operacionalmente para a gestão de canais próprios (iniciando pelo canal <em>Quase Ficção</em> e expandindo para outros canais do mesmo operador). O sistema não é um serviço público ou comercial, não possui cadastro para terceiros, não comercializa dados e não coleta informações de usuários externos.
+        O aplicativo é uma ferramenta interna e não constitui um serviço comercial, público ou plataforma para terceiros (não é SaaS). Não oferece cadastro a terceiros, não comercializa dados e não processa dados de usuários externos.
       </p>
 
-      <h2>2. Escopos de Acesso e Integrações por Plataforma</h2>
+      <h2>2. Uso dos Serviços de API do YouTube e Políticas Aplicáveis</h2>
       <p>
-        Cada canal ou página integrada à Central de Publicações é conectado mediante consentimento formal e autorização individual, de forma que as permissões de uma plataforma ou canal não interferem nas demais:
+        A Central de Publicações utiliza os <strong>Serviços de API do YouTube</strong> (<em>YouTube Data API v3</em>) para realizar suas funções de integração. Ao utilizar o aplicativo em conexão com o YouTube, o sistema submete-se integralmente às seguintes políticas e diretrizes externas:
       </p>
       <ul>
-        <li>
-          <strong>Integração com YouTube (Google OAuth 2.0):</strong> a ferramenta utiliza a <em>YouTube Data API v3</em> solicitando estritamente os escopos necessários:
-          <ul>
-            <li><code>https://www.googleapis.com/auth/youtube.upload</code>: para envio de arquivos de vídeo, definição de metadados (título, descrição, idioma, tags) e imagens de miniatura nos vídeos do canal autorizado.</li>
-            <li><code>https://www.googleapis.com/auth/youtube.readonly</code>: estritamente para consultar o identificador do canal (<em>channel ID</em>), validando programaticamente se a conta corresponde ao canal selecionado antes de iniciar qualquer envio.</li>
-          </ul>
-        </li>
-        <li>
-          <strong>Integrações com Instagram e Facebook:</strong> as publicações em páginas ou perfis profissionais próprios do operador utilizam os fluxos e credenciais oficiais de API das respectivas plataformas, restritas à postagem de conteúdo previamente aprovado pelo operador.
-        </li>
+        <li><strong>Termos dos Serviços de API do YouTube:</strong> <a href="https://developers.google.com/youtube/terms/api-services-terms-of-service" target="_blank" rel="noopener noreferrer">https://developers.google.com/youtube/terms/api-services-terms-of-service</a></li>
+        <li><strong>Política de Dados do Usuário dos Serviços de API do Google:</strong> <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">https://developers.google.com/terms/api-services-user-data-policy</a> (incluindo seus requisitos de Uso Limitado)</li>
+        <li><strong>Termos de Serviço do YouTube:</strong> <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">https://www.youtube.com/t/terms</a></li>
+        <li><strong>Política de Privacidade da Google:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a></li>
       </ul>
-      <p>
-        Nenhum dado pessoal de outros serviços (como e-mails do Gmail, arquivos do Google Drive, contatos ou dados de navegação) é acessado, consultado ou processado.
-      </p>
 
-      <h2>3. Armazenamento e Isolamento de Tokens</h2>
+      <h2>3. Dados Obtidos da API e Finalidade de Uso</h2>
       <p>
-        A custódia das credenciais segue políticas estritas de isolamento local:
+        A autenticação com a conta Google é realizada através do protocolo padrão <strong>Google OAuth 2.0</strong> mediante autorização individual para cada canal próprio. Os dados acessados e obtidos através da YouTube Data API limitam-se estritamente às seguintes finalidades operacionais:
       </p>
       <ul>
-        <li><strong>Armazenamento estritamente local:</strong> Todos os tokens de acesso e renovação são armazenados unicamente no disco rígido da máquina local do operador, em arquivos individuais separados por canal e plataforma (com permissões restritas de leitura/escrita <code>0600</code>).</li>
-        <li><strong>Sem intermediários externos:</strong> A comunicação ocorre de forma direta e segura entre o ambiente local do operador e os servidores oficiais das plataformas (endpoints de API oficiais). Não existem servidores proxy, bancos de dados em nuvem de terceiros ou serviços intermediários armazenando ou interceptando tokens.</li>
-        <li><strong>Renovação segura:</strong> A renovação periódica de tokens OAuth é realizada diretamente com os serviços de autenticação oficiais (ex.: Google Identity), mantendo os novos tokens no ambiente local.</li>
-      </ul>
-
-      <h2>4. Não Compartilhamento e Não Comercialização de Dados</h2>
-      <ul>
-        <li><strong>Sem comercialização:</strong> A Central de Publicações não vende, não aluga, não compartilha e não cede dados de usuários ou credenciais de API a terceiros sob nenhuma hipótese.</li>
-        <li><strong>Sem rastreamento:</strong> Este site e o sistema operacional não utilizam rastreadores analíticos de terceiros, ferramentas de telemetria comportamental, cookies de publicidade ou pixels de marketing.</li>
-        <li><strong>Sem uso para modelos de inteligência artificial de terceiros:</strong> Nenhum dado acessado por meio das APIs é utilizado para treinar modelos públicos de linguagem ou inteligência artificial externa.</li>
-      </ul>
-
-      <h2>5. Como Revogar a Autorização</h2>
-      <p>
-        O operador pode consultar ou revogar a qualquer momento o acesso concedido à Central de Publicações diretamente nos painéis de segurança de cada plataforma:
-      </p>
-      <ul>
-        <li><strong>Contas Google / YouTube:</strong> acesse <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">https://myaccount.google.com/permissions</a>, selecione o aplicativo e clique em <em>Remover o acesso</em>.</li>
-        <li><strong>Contas Meta / Instagram / Facebook:</strong> acesse a área de aplicativos e sites conectados nas configurações de segurança da respectiva conta comercial.</li>
+        <li><strong>Autenticação e autorização:</strong> obtenção de credenciais de acesso para permitir a comunicação direta entre o script local e a API do YouTube.</li>
+        <li><strong>Identificação do canal:</strong> consulta do identificador único (<em>channel ID</em>) e título do canal via escopo <code>https://www.googleapis.com/auth/youtube.readonly</code>, exclusivamente para validar se a conta autorizada corresponde ao canal correto antes de qualquer postagem, evitando envios acidentais.</li>
+        <li><strong>Envio de vídeos:</strong> upload de arquivos audiovisuais, definição de títulos, descrições, tags, idioma e configuração de miniaturas (thumbnails) via escopo <code>https://www.googleapis.com/auth/youtube.upload</code>.</li>
+        <li><strong>Consulta de resultados:</strong> verificação da resposta imediata da API do YouTube (identificador do vídeo criado e confirmação de processamento) para registro local do status de publicação.</li>
       </ul>
       <p>
-        A revogação cancela imediatamente a validade dos tokens locais para aquele canal ou serviço, impedindo qualquer nova ação automatizada até nova autorização explícita.
+        Nenhum outro serviço da Google (como Gmail, Google Drive, contatos ou histórico de navegação) é acessado, consultado ou manipulado.
       </p>
 
-      <h2>6. Contato do Responsável</h2>
+      <h2>4. Armazenamento, Retenção e Exclusão de Tokens e Registros Locais</h2>
       <p>
-        Para esclarecimentos ou informações adicionais sobre esta política de privacidade, entre em contato diretamente com o responsável técnico:
+        O tratamento e a guarda de dados e credenciais seguem as seguintes regras:
+      </p>
+      <ul>
+        <li><strong>Armazenamento estritamente local:</strong> Os tokens de acesso (<em>access tokens</em>) e de renovação (<em>refresh tokens</em>) são armazenados exclusivamente no computador local do titular, em arquivos individuais por canal. O acesso é restrito através das permissões de arquivo do sistema operacional (permissões <code>0600</code>, exclusivas do usuário local). Não há implementação de criptografia adicional sobre esses arquivos.</li>
+        <li><strong>Sem intermediários externos:</strong> O tráfego de dados e arquivos de vídeo ocorre diretamente entre a máquina do operador e os servidores seguros da Google. Nenhum token ou dado é enviado para servidores intermediários, bancos de dados em nuvem ou serviços de terceiros.</li>
+        <li><strong>Período de retenção:</strong> Os tokens de autorização permanecem armazenados localmente até que sejam revogados na Conta Google ou excluídos manualmente pelo operador. Os registros e metadados locais de publicação são mantidos no ambiente local até sua exclusão manual.</li>
+        <li><strong>Exclusão manual de tokens e registros:</strong> O titular pode apagar permanentemente os tokens a qualquer momento excluindo os respectivos arquivos locais de credenciais (arquivos JSON na pasta local de segredos da aplicação) e os arquivos de registros de postagens em seu computador.</li>
+      </ul>
+
+      <h2>5. Não Compartilhamento, Não Comercialização e Não Uso para Publicidade ou IA</h2>
+      <p>
+        Em estrita conformidade com o funcionamento real da aplicação:
+      </p>
+      <ul>
+        <li><strong>Ausência de venda de dados:</strong> Os dados obtidos a partir das APIs do Google nunca são vendidos, alugados, cedidos ou transferidos a terceiros sob nenhuma hipótese.</li>
+        <li><strong>Sem uso para publicidade:</strong> Os dados obtidos não são utilizados para exibição de anúncios, segmentação publicitária ou marketing direcionado.</li>
+        <li><strong>Sem uso para treinamento de modelos de inteligência artificial:</strong> Nenhuma informação ou conteúdo acessado através das APIs do Google é utilizado para treinar modelos de inteligência artificial ou de aprendizado de máquina públicos ou de terceiros.</li>
+        <li><strong>Sem rastreamento:</strong> Este site e o sistema operacional não utilizam cookies analíticos, rastreadores de terceiros ou ferramentas de telemetria comportamental.</li>
+      </ul>
+
+      <h2>6. Como Revogar a Autorização</h2>
+      <p>
+        O acesso concedido à Central de Publicações pode ser revogado a qualquer momento pelo titular da Conta Google:
+      </p>
+      <ol>
+        <li>Acesse a página de segurança e permissões de sua Conta Google: <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">https://myaccount.google.com/permissions</a></li>
+        <li>Localize o aplicativo <strong>Central de Publicações</strong> na lista de conexões autorizadas.</li>
+        <li>Clique em <strong>Remover o acesso</strong> (ou <em>Excluir conexões que você tem com Central de Publicações</em>).</li>
+      </ol>
+      <p>
+        Após a revogação na Conta Google, o token armazenado localmente torna-se imediatamente inválido para qualquer nova requisição à API. O titular pode também remover o arquivo local de credenciais em seu computador para eliminar qualquer registro remanescente.
+      </p>
+
+      <h2>7. Contato do Responsável</h2>
+      <p>
+        Para dúvidas, informações adicionais ou solicitações relacionadas a esta Política de Privacidade, entre em contato através do canal oficial:
       </p>
       <p class="contact-box">
         <strong>E-mail de contato:</strong> <a href="mailto:quaseficcaotv@gmail.com">quaseficcaotv@gmail.com</a>
