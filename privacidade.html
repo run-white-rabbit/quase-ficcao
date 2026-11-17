@@ -12,7 +12,7 @@
       <p class="nav-back"><a href="index.html">&larr; Página Inicial</a> | <a href="termos.html">Termos de Serviço</a></p>
       <h1>Política de Privacidade</h1>
       <p class="tagline">Aplicativo: Central de Publicações (Google Cloud: quase-ficcao-automacao)</p>
-      <p class="date">Última atualização: 13 de novembro de 2026</p>
+      <p class="date">Última atualização: 17 de novembro de 2026</p>
     </header>
 
     <article class="card content">
@@ -41,23 +41,39 @@
       </p>
       <ul>
         <li><strong>Autenticação e autorização:</strong> obtenção de credenciais de acesso para permitir a comunicação direta entre o script local e a API do YouTube.</li>
-        <li><strong>Identificação do canal:</strong> consulta do identificador único (<em>channel ID</em>) e título do canal via escopo <code>https://www.googleapis.com/auth/youtube.readonly</code>, exclusivamente para validar se a conta autorizada corresponde ao canal correto antes de qualquer postagem, evitando envios acidentais.</li>
+        <li><strong>Identificação do canal e métricas de desempenho:</strong> consulta do identificador único (<em>channel ID</em>) e título do canal via escopo <code>https://www.googleapis.com/auth/youtube.readonly</code> para validar se a conta autorizada corresponde ao canal correto antes de qualquer postagem (evitando envios acidentais), bem como consulta de estatísticas do canal e dos vídeos para o painel interno de desempenho. Os dados consultados para o painel incluem títulos, identificadores, datas de publicação, visualizações, inscritos, curtidas e comentários.</li>
         <li><strong>Envio de vídeos:</strong> upload de arquivos audiovisuais, definição de títulos, descrições, tags, idioma e configuração de miniaturas (thumbnails) via escopo <code>https://www.googleapis.com/auth/youtube.upload</code>.</li>
-        <li><strong>Consulta de resultados:</strong> verificação da resposta imediata da API do YouTube (identificador do vídeo criado e confirmação de processamento) para registro local do status de publicação.</li>
+        <li><strong>Consulta de resultados de postagem:</strong> verificação da resposta imediata da API do YouTube (identificador do vídeo criado e confirmação de processamento) para registro local do status de publicação.</li>
       </ul>
       <p>
         Nenhum outro serviço da Google (como Gmail, Google Drive, contatos ou histórico de navegação) é acessado, consultado ou manipulado.
       </p>
 
-      <h2>4. Armazenamento, Retenção e Exclusão de Tokens e Registros Locais</h2>
+      <h2>4. Armazenamento, Retenção e Exclusão de Dados e Tokens</h2>
       <p>
-        O tratamento e a guarda de dados e credenciais seguem as seguintes regras:
+        O tratamento e a guarda de informações no ambiente local da Central de Publicações diferenciam claramente as categorias de dados manipuladas:
       </p>
       <ul>
-        <li><strong>Armazenamento estritamente local:</strong> Os tokens de acesso (<em>access tokens</em>) e de renovação (<em>refresh tokens</em>) são armazenados exclusivamente no computador local do titular, em arquivos individuais por canal. O acesso é restrito através das permissões de arquivo do sistema operacional (permissões <code>0600</code>, exclusivas do usuário local). Não há implementação de criptografia adicional sobre esses arquivos.</li>
-        <li><strong>Sem intermediários externos:</strong> O tráfego de dados e arquivos de vídeo ocorre diretamente entre a máquina do operador e os servidores seguros da Google. Nenhum token ou dado é enviado para servidores intermediários, bancos de dados em nuvem ou serviços de terceiros.</li>
-        <li><strong>Período de retenção:</strong> Os tokens de autorização permanecem armazenados localmente até que sejam revogados na Conta Google ou excluídos manualmente pelo operador. Os registros e metadados locais de publicação são mantidos no ambiente local até sua exclusão manual.</li>
-        <li><strong>Exclusão manual de tokens e registros:</strong> O titular pode apagar permanentemente os tokens a qualquer momento excluindo os respectivos arquivos locais de credenciais (arquivos JSON na pasta local de segredos da aplicação) e os arquivos de registros de postagens em seu computador.</li>
+        <li>
+          <strong>Categorias de dados manipuladas:</strong>
+          <ul>
+            <li><em>Conteúdo autoral do canal:</em> arquivos de vídeo, imagens de capa (miniaturas), roteiros, títulos e descrições produzidos pelo operador. Esses materiais são de propriedade do criador e <strong>não</strong> são afetados nem eliminados pelas rotinas de expiração da API.</li>
+            <li><em>Registros de publicação do sistema:</em> relatórios e históricos locais de postagem gerados pelo próprio aplicativo, mantidos localmente até sua exclusão manual pelo operador.</li>
+            <li><em>Informações obtidas pela YouTube Data API:</em> estatísticas e metadados de desempenho do canal e dos vídeos (como contagem de visualizações, inscritos, curtidas e comentários).</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Rotina de retenção de 30 dias para dados da API:</strong> As estatísticas e metadados recebidos da YouTube Data API passam por uma rotina de retenção de 30 dias. A limpeza de dados que ultrapassam esse período é executada nos arquivos locais quando o painel consulta as métricas ou quando uma rotina de coleta termina durante o funcionamento do aplicativo (o computador não executa tarefas de limpeza enquanto estiver desligado ou sem o programa em execução). Os conteúdos autorais (vídeos, capas, roteiros e textos criados pelo operador) permanecem preservados e não são removidos por essa rotina.
+        </li>
+        <li>
+          <strong>Armazenamento e renovação de tokens OAuth:</strong> Os tokens de acesso (<em>access tokens</em>) e de renovação (<em>refresh tokens</em>) são salvos exclusivamente no computador local do titular, em arquivos individuais por canal, com permissões de acesso restritas pelo sistema operacional (permissões <code>0600</code>, exclusivas do usuário local). Não há camada de criptografia adicional implementada sobre esses arquivos. Quando necessário, a renovação do token ocorre diretamente entre o computador local e os servidores de autenticação da Google via biblioteca oficial (<code>google-auth</code>), mantendo o novo token no disco local.
+        </li>
+        <li>
+          <strong>Comunicação direta sem intermediários:</strong> As requisições de API e os envios de arquivos ocorrem diretamente entre a máquina do operador e os servidores oficiais da Google, sem tráfego por servidores proxy intermediários, bancos de dados em nuvem de terceiros ou serviços externos.
+        </li>
+        <li>
+          <strong>Exclusão de tokens e dados:</strong> Os tokens permanecem armazenados localmente até que o titular realize sua exclusão manual (apagando os respectivos arquivos JSON de credenciais na pasta local da aplicação). A revogação do acesso pelo painel da Conta Google invalida imediatamente o token para novas chamadas à API, mas não provoca a exclusão automática dos arquivos locais do computador, cabendo ao operador excluí-los manualmente se desejar eliminar qualquer vestígio físico.
+        </li>
       </ul>
 
       <h2>5. Não Compartilhamento, Não Comercialização e Não Uso para Publicidade ou IA</h2>
