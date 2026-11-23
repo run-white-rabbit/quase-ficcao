@@ -12,7 +12,7 @@
       <p class="nav-back"><a href="index.html">&larr; Página Inicial</a> | <a href="termos.html">Termos de Serviço</a></p>
       <h1>Política de Privacidade</h1>
       <p class="tagline">Aplicativo: Central de Publicações (Google Cloud: quase-ficcao-automacao)</p>
-      <p class="date">Última atualização: 17 de novembro de 2026</p>
+      <p class="date">Última atualização: 23 de novembro de 2026</p>
     </header>
 
     <article class="card content">
@@ -58,21 +58,21 @@
           <strong>Categorias de dados manipuladas:</strong>
           <ul>
             <li><em>Conteúdo autoral do canal:</em> arquivos de vídeo, imagens de capa (miniaturas), roteiros, títulos e descrições produzidos pelo operador. Esses materiais são de propriedade do criador e <strong>não</strong> são afetados nem eliminados pelas rotinas de expiração da API.</li>
-            <li><em>Registros de publicação do sistema:</em> relatórios e históricos locais de postagem gerados pelo próprio aplicativo, mantidos localmente até sua exclusão manual pelo operador.</li>
+            <li><em>Registros de publicação do sistema:</em> relatórios e históricos locais de postagem gerados pelo próprio aplicativo, incluindo identificadores retornados pela API usados para evitar publicações duplicadas. Esses registros não são abrangidos pela limpeza automática do painel; a exclusão dos dados provenientes da API nesses registros exige atuação manual do operador, observando os mesmos prazos de revogação e solicitação de exclusão descritos abaixo.</li>
             <li><em>Informações obtidas pela YouTube Data API:</em> estatísticas e metadados de desempenho do canal e dos vídeos (como contagem de visualizações, inscritos, curtidas e comentários).</li>
           </ul>
         </li>
         <li>
-          <strong>Rotina de retenção de 30 dias para dados da API:</strong> As estatísticas e metadados recebidos da YouTube Data API passam por uma rotina de retenção de 30 dias. A limpeza de dados que ultrapassam esse período é executada nos arquivos locais quando o painel consulta as métricas ou quando uma rotina de coleta termina durante o funcionamento do aplicativo (o computador não executa tarefas de limpeza enquanto estiver desligado ou sem o programa em execução). Os conteúdos autorais (vídeos, capas, roteiros e textos criados pelo operador) permanecem preservados e não são removidos por essa rotina.
+          <strong>Rotina de retenção de 30 dias para dados da API:</strong> As estatísticas e metadados consultados para o painel são excluídos dos arquivos de métricas, do resumo e do log de coleta quando atingem 30 dias. A limpeza é executada ao consultar as métricas e no início e no fim das coletas. O coletor instalado está programado para executar a cada três horas, inclusive com o painel fechado. A execução depende do computador ligado e da sessão do usuário ativa; não há limpeza enquanto a máquina estiver desligada ou suspensa. O operador deve manter a rotina ativa e assegurar a exclusão dentro dos prazos aplicáveis. Os conteúdos autorais (vídeos, capas, roteiros e textos criados pelo operador) permanecem preservados e não são removidos por essa rotina.
         </li>
         <li>
-          <strong>Armazenamento e renovação de tokens OAuth:</strong> Os tokens de acesso (<em>access tokens</em>) e de renovação (<em>refresh tokens</em>) são salvos exclusivamente no computador local do titular, em arquivos individuais por canal, com permissões de acesso restritas pelo sistema operacional (permissões <code>0600</code>, exclusivas do usuário local). Não há camada de criptografia adicional implementada sobre esses arquivos. Quando necessário, a renovação do token ocorre diretamente entre o computador local e os servidores de autenticação da Google via biblioteca oficial (<code>google-auth</code>), mantendo o novo token no disco local.
+          <strong>Armazenamento e renovação de tokens OAuth:</strong> Os tokens de acesso (<em>access tokens</em>) e de renovação (<em>refresh tokens</em>) são salvos exclusivamente no computador local do titular, em arquivos individuais por canal, com permissões de acesso restritas pelo sistema operacional (permissões <code>0600</code>, exclusivas do usuário local). Não há camada de criptografia adicional implementada sobre esses arquivos. Quando necessário, a renovação do token ocorre diretamente entre o computador local e os servidores de autenticação da Google via biblioteca oficial (<code>google-auth</code>), salvando o token renovado no disco quando usada pela rotina de publicação. No coletor de métricas, a renovação ocorre apenas em memória, sem regravar o arquivo de credenciais.
         </li>
         <li>
           <strong>Comunicação direta sem intermediários:</strong> As requisições de API e os envios de arquivos ocorrem diretamente entre a máquina do operador e os servidores oficiais da Google, sem tráfego por servidores proxy intermediários, bancos de dados em nuvem de terceiros ou serviços externos.
         </li>
         <li>
-          <strong>Exclusão de tokens e dados:</strong> Os tokens permanecem armazenados localmente até que o titular realize sua exclusão manual (apagando os respectivos arquivos JSON de credenciais na pasta local da aplicação). A revogação do acesso pelo painel da Conta Google invalida imediatamente o token para novas chamadas à API, mas não provoca a exclusão automática dos arquivos locais do computador, cabendo ao operador excluí-los manualmente se desejar eliminar qualquer vestígio físico.
+          <strong>Exclusão de tokens e dados:</strong> Os tokens permanecem armazenados localmente até que o titular realize sua exclusão manual (apagando os respectivos arquivos JSON de credenciais na pasta local da aplicação). O coletor verifica a possibilidade de renovação da autorização a cada execução, inclusive para canais arquivados. Ao detectar autorização inválida ou revogada, ou ausência da credencial local, exclui os dados do YouTube daquele canal nos arquivos de métricas, resumo e log do painel, independentemente da idade. Erros temporários de rede não são tratados como revogação; a retenção continua sendo aplicada. Os arquivos de credenciais não são apagados nem modificados por essa limpeza.
         </li>
       </ul>
 
@@ -97,7 +97,11 @@
         <li>Clique em <strong>Remover o acesso</strong> (ou <em>Excluir conexões que você tem com Central de Publicações</em>).</li>
       </ol>
       <p>
-        Após a revogação na Conta Google, o token armazenado localmente torna-se imediatamente inválido para qualquer nova requisição à API. O titular pode também remover o arquivo local de credenciais em seu computador para eliminar qualquer registro remanescente.
+        Após revogar o acesso na Conta Google, os dados do painel são excluídos assim que a rotina detecta a perda da autorização. O prazo exigido para exclusão de dados da API após revogação na Conta Google é de até 30 dias corridos; solicitações diretas de exclusão devem ser atendidas o mais rápido possível, em até 7 dias corridos. O operador deve assegurar esses prazos também para os registros de publicação que dependem de exclusão manual e quando a execução automática estiver indisponível. O titular pode remover manualmente o arquivo local de credenciais.
+      </p>
+
+      <p>
+        Para excluir imediatamente os dados locais do painel, o operador pode executar, na pasta da aplicação, <code>.venv/bin/python painel/retencao.py --excluir-canal NOME_DO_CANAL</code>, substituindo o nome pelo identificador local do canal. Se houver coleta em andamento, o comando informa que a exclusão não ocorreu e deve ser repetido após seu término. Essa exclusão não revoga a autorização; enquanto o acesso continuar autorizado, novas coletas poderão obter dados novamente. Também é possível solicitar a exclusão pelo e-mail abaixo. A exclusão local não remove vídeos nem outros dados armazenados no YouTube e preserva o conteúdo autoral.
       </p>
 
       <h2>7. Contato do Responsável</h2>
